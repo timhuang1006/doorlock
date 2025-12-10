@@ -346,27 +346,141 @@
         </div>
     </section>
 
-    <!-- APP 演示 -->
+                    <!-- APP 演示 -->
     <section id="app-demo" class="app-demo-section">
         <div class="container">
             <h2 class="section-title animate-on-scroll">APP <span class="gold-glow">遠端視訊對講</span></h2>
             <p class="section-subtitle animate-on-scroll">人在外面也能隨時掌握家門狀況</p>
 
             <div class="app-demo-wrapper animate-on-scroll">
-                <div class="phone-mockup">
-                    <div class="phone-screen">
-                        <img src="assets/螢幕擷取畫面 2025-11-07 001342.png" alt="APP 介面" class="app-screenshot"
-                            onerror="this.src='https://placehold.co/300x600/1a1a2e/FFD700?text=APP';">
-                        <div class="app-overlay">
-                            <div class="unlock-status" id="unlockStatus">訪客請求進入...</div>
-                            <button class="unlock-btn" id="unlockBtn">
-                                <i class="fas fa-lock"></i>
-                            </button>
-                            <p class="unlock-hint">點擊解鎖</p>
+                <!-- 手機模擬器 - 完全用CSS重現APP介面 -->
+                <div class="phone-simulator">
+                    <!-- 手機框架 -->
+                    <div class="phone-frame">
+                        <!-- APP畫面內容 -->
+                        <div class="app-screen" id="appScreen">
+                            
+                            <!-- 初始狀態：遠程開鎖請求 -->
+                            <div class="app-state app-state-request" id="appStateRequest">
+                                <!-- 頂部導航 -->
+                                <div class="app-header">
+                                    <span class="back-arrow">‹</span>
+                                    <span class="header-title">展示架2</span>
+                                    <span></span>
+                                </div>
+                                
+                                <!-- 遠程開鎖請求卡片 -->
+                                <div class="unlock-request-card">
+                                    <div class="request-icon">
+                                        <i class="fas fa-broadcast-tower"></i>
+                                    </div>
+                                    <span class="request-text">遠程開鎖請求</span>
+                                </div>
+                                
+                                <!-- 功能圖標列 -->
+                                <div class="app-icons-row">
+                                    <div class="app-icon-item">
+                                        <div class="icon-circle blue"><i class="fas fa-share-alt"></i></div>
+                                        <span>分享設備</span>
+                                    </div>
+                                    <div class="app-icon-item">
+                                        <div class="icon-circle blue"><i class="fas fa-key"></i></div>
+                                        <span>鑰匙管理</span>
+                                    </div>
+                                    <div class="app-icon-item">
+                                        <div class="icon-circle orange"><i class="fas fa-th"></i></div>
+                                        <span>離線密碼</span>
+                                    </div>
+                                    <div class="app-icon-item">
+                                        <div class="icon-circle green"><i class="fas fa-ellipsis-h"></i></div>
+                                        <span>更多</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- 開鎖對話框 -->
+                                <div class="unlock-dialog">
+                                    <div class="dialog-title">遠程開鎖請求</div>
+                                    <div class="dialog-subtitle">展示架2</div>
+                                    <div class="dialog-buttons">
+                                        <button class="btn-close">關閉</button>
+                                        <button class="btn-unlock" id="btnUnlock">
+                                            馬上開鎖(<span id="countdownNum">60</span>秒)
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 解鎖成功狀態 -->
+                            <div class="app-state app-state-unlocked" id="appStateUnlocked">
+                                <!-- 頂部通知 -->
+                                <div class="unlock-notification">
+                                    <div class="notif-header">
+                                        <div class="notif-icon"><i class="fas fa-door-open"></i></div>
+                                        <span class="notif-title">展示架2</span>
+                                        <span class="notif-dismiss">忽略</span>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-status">門鎖已打開</div>
+                                        <div class="notif-user">手機用戶:</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 藍色區塊 -->
+                                <div class="unlock-blue-bar"></div>
+                                
+                                <!-- 功能圖標列 -->
+                                <div class="app-icons-row">
+                                    <div class="app-icon-item">
+                                        <div class="icon-circle blue"><i class="fas fa-share-alt"></i></div>
+                                        <span>分享設備</span>
+                                    </div>
+                                    <div class="app-icon-item">
+                                        <div class="icon-circle blue"><i class="fas fa-key"></i></div>
+                                        <span>鑰匙管理</span>
+                                    </div>
+                                    <div class="app-icon-item">
+                                        <div class="icon-circle orange"><i class="fas fa-th"></i></div>
+                                        <span>離線密碼</span>
+                                    </div>
+                                    <div class="app-icon-item">
+                                        <div class="icon-circle green"><i class="fas fa-ellipsis-h"></i></div>
+                                        <span>更多</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- 記錄列表 -->
+                                <div class="unlock-records">
+                                    <div class="records-date">今天</div>
+                                    <div class="record-item">
+                                        <div class="record-dot"></div>
+                                        <div class="record-info">
+                                            <div class="record-title">門鎖已打開</div>
+                                            <div class="record-sub">手機用戶:</div>
+                                        </div>
+                                        <div class="record-icon"><i class="fas fa-mobile-alt"></i></div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="record-dot"></div>
+                                        <div class="record-info">
+                                            <div class="record-title">遠程開鎖請求</div>
+                                        </div>
+                                        <div class="record-thumb"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 開鎖成功特效 -->
+                            <div class="unlock-effect" id="unlockEffect">
+                                <div class="effect-ring"></div>
+                                <div class="effect-icon"><i class="fas fa-unlock-alt"></i></div>
+                                <div class="effect-text">門鎖已打開</div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
 
+                <!-- 功能說明 -->
                 <div class="app-features">
                     <div class="app-feature-item">
                         <i class="fas fa-video"></i>
@@ -531,14 +645,15 @@
                                 </div>
 
 
-                                
+
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- 4. 4吋高清大螢幕 (新增) -->
-                <div id="screen" class="security-content security-content-block animate-on-scroll" style="display: none;">
+                <div id="screen" class="security-content security-content-block animate-on-scroll"
+                    style="display: none;">
                     <!-- 左側：產品展示 -->
                     <div class="security-left">
                         <div class="security-main-showcase">
@@ -582,168 +697,166 @@
         </div>
     </section>
 
-<!-- 安靜可靠機械鎖體 -->
-                                <section id="mechanical-lock" class="mechanical-lock-section">
-                                    <div class="container">
-                                        <h2 class="section-title animate-on-scroll">安靜可靠 <span
-                                                class="gold-glow">機械鎖體</span></h2>
-                                        <p class="section-subtitle animate-on-scroll">德國工藝傳承，每一次開鎖都是享受</p>
+    <!-- 安靜可靠機械鎖體 -->
+    <section id="mechanical-lock" class="mechanical-lock-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">安靜可靠 <span class="gold-glow">機械鎖體</span></h2>
+            <p class="section-subtitle animate-on-scroll">德國工藝傳承，每一次開鎖都是享受</p>
 
-                                        <div class="mechanical-showcase animate-on-scroll">
-                                            <div class="mech-image-container">
-                                                <img src="assets/screenshot_2025-11-07_001829.png" alt="機械鎖體結構">
-                                            </div>
+            <div class="mechanical-showcase animate-on-scroll">
+                <div class="mech-image-container">
+                    <img src="assets/screenshot_2025-11-07_001829.png" alt="機械鎖體結構">
+                </div>
 
-                                            <div class="mech-features">
-                                                <div class="mech-feature">
-                                                    <div class="mech-icon"><i class="fas fa-volume-mute"></i></div>
-                                                    <div class="mech-text">
-                                                        <h4>超靜音運轉</h4>
-                                                        <p>開鎖聲小於 45dB，深夜回家不打擾家人</p>
-                                                    </div>
-                                                </div>
-                                                <div class="mech-feature">
-                                                    <div class="mech-icon"><i class="fas fa-bolt"></i></div>
-                                                    <div class="mech-text">
-                                                        <h4>大扭力電機</h4>
-                                                        <p>主機外置電機，帶動天地勾，穩定可靠</p>
-                                                    </div>
-                                                </div>
-                                                <div class="mech-feature">
-                                                    <div class="mech-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                                    <div class="mech-text">
-                                                        <h4>0.3 秒解鎖</h4>
-                                                        <p>急速響應，辨識即開，絕不拖泥帶水</p>
-                                                    </div>
-                                                </div>
-                                                <div class="mech-feature">
-                                                    <div class="mech-icon"><i class="fas fa-shield-alt"></i></div>
-                                                    <div class="mech-text">
-                                                        <h4>十萬次壽命</h4>
-                                                        <p>耐用設計，長久使用依然順滑如初</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
+                <div class="mech-features">
+                    <div class="mech-feature">
+                        <div class="mech-icon"><i class="fas fa-volume-mute"></i></div>
+                        <div class="mech-text">
+                            <h4>超靜音運轉</h4>
+                            <p>開鎖聲小於 45dB，深夜回家不打擾家人</p>
+                        </div>
+                    </div>
+                    <div class="mech-feature">
+                        <div class="mech-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="mech-text">
+                            <h4>大扭力電機</h4>
+                            <p>主機外置電機，帶動天地勾，穩定可靠</p>
+                        </div>
+                    </div>
+                    <div class="mech-feature">
+                        <div class="mech-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="mech-text">
+                            <h4>0.3 秒解鎖</h4>
+                            <p>急速響應，辨識即開，絕不拖泥帶水</p>
+                        </div>
+                    </div>
+                    <div class="mech-feature">
+                        <div class="mech-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="mech-text">
+                            <h4>十萬次壽命</h4>
+                            <p>耐用設計，長久使用依然順滑如初</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                                <!-- 安裝實例 Gallery -->
-                                <section id="gallery" class="gallery-section">
-                                    <div class="container-fluid">
-                                        <h2 class="section-title animate-on-scroll"><span class="gold-glow">實機安裝</span>
-                                            案例展示</h2>
-                                        <p class="section-subtitle animate-on-scroll">多種門型完美適配</p>
+    <!-- 安裝實例 Gallery -->
+    <section id="gallery" class="gallery-section">
+        <div class="container-fluid">
+            <h2 class="section-title animate-on-scroll"><span class="gold-glow">實機安裝</span>
+                案例展示</h2>
+            <p class="section-subtitle animate-on-scroll">多種門型完美適配</p>
 
-                                        <div class="gallery-grid">
-                                            <div class="gallery-item animate-on-scroll" data-delay="0">
-                                                <img src="assets/demo15.jpg" alt="安裝案例" loading="lazy"
-                                                    onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
-                                                <div class="gallery-overlay">
-                                                    <span class="gallery-label">輕薄機身搭配</span>
-                                                </div>
-                                            </div>
-                                            <div class="gallery-item animate-on-scroll" data-delay="50">
-                                                <img src="assets/demo16.jpg" alt="安裝案例" loading="lazy"
-                                                    onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
-                                                <div class="gallery-overlay">
-                                                    <span class="gallery-label">室內機身</span>
-                                                </div>
-                                            </div>
-                                            <div class="gallery-item animate-on-scroll" data-delay="100">
-                                                <img src="assets/demo17.jpg" alt="安裝案例" loading="lazy"
-                                                    onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
-                                                <div class="gallery-overlay">
-                                                    <span class="gallery-label">深色門搭配</span>
-                                                </div>
-                                            </div>
-                                            <div class="gallery-item animate-on-scroll" data-delay="150">
-                                                <img src="assets/demo18.jpg" alt="安裝案例" loading="lazy"
-                                                    onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
-                                                <div class="gallery-overlay">
-                                                    <span class="gallery-label">室內機特寫</span>
-                                                </div>
-                                            </div>
-                                            <div class="gallery-item animate-on-scroll" data-delay="250">
-                                                <img src="assets/DEMO1.jpg" alt="室內螢幕" loading="lazy"
-                                                    onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
-                                                <div class="gallery-overlay">
-                                                    <span class="gallery-label">4.5吋螢幕</span>
-                                                </div>
-                                            </div>
-                                            <div class="gallery-item animate-on-scroll" data-delay="300">
-                                                <img src="assets/demo3.jpg" alt="傳統門" loading="lazy"
-                                                    onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
-                                                <div class="gallery-overlay">
-                                                    <span class="gallery-label">紅木紋門</span>
-                                                </div>
-                                            </div>
-                                            <div class="gallery-item animate-on-scroll" data-delay="350">
-                                                <img src="assets/demo4.jpg" alt="鑄鋁門" loading="lazy"
-                                                    onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
-                                                <div class="gallery-overlay">
-                                                    <span class="gallery-label">鑄鋁門搭配</span>
-                                                </div>
-                                            </div>
-                                            <div class="gallery-item animate-on-scroll" data-delay="400">
-                                                <img src="assets/demo2.jpg" alt="深色木門" loading="lazy"
-                                                    onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
-                                                <div class="gallery-overlay">
-                                                    <span class="gallery-label">深色木紋</span>
-                                                </div>
-                                            </div>
-                                            <div class="gallery-item animate-on-scroll" data-delay="450">
-                                                <img src="assets/demo5.jpg" alt="白色門" loading="lazy"
-                                                    onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
-                                                <div class="gallery-overlay">
-                                                    <span class="gallery-label">現代白色門</span>
-                                                </div>
-                                            </div>
-                                            <div class="gallery-item animate-on-scroll" data-delay="500">
-                                                <img src="assets/demo6.jpg" alt="室內白門" loading="lazy"
-                                                    onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
-                                                <div class="gallery-overlay">
-                                                    <span class="gallery-label">白色系門</span>
-                                                </div>
-                                            </div>
-                                            <div class="gallery-item animate-on-scroll" data-delay="550">
-                                                <img src="assets/demo10.jpg" alt="黑門" loading="lazy"
-                                                    onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
-                                                <div class="gallery-overlay">
-                                                    <span class="gallery-label">消光黑門</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll" data-delay="0">
+                    <img src="assets/demo15.jpg" alt="安裝案例" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">輕薄機身搭配</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="50">
+                    <img src="assets/demo16.jpg" alt="安裝案例" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">室內機身</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="100">
+                    <img src="assets/demo17.jpg" alt="安裝案例" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">深色門搭配</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="150">
+                    <img src="assets/demo18.jpg" alt="安裝案例" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">室內機特寫</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="250">
+                    <img src="assets/DEMO1.jpg" alt="室內螢幕" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">4.5吋螢幕</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="300">
+                    <img src="assets/demo3.jpg" alt="傳統門" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">紅木紋門</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="350">
+                    <img src="assets/demo4.jpg" alt="鑄鋁門" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">鑄鋁門搭配</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="400">
+                    <img src="assets/demo2.jpg" alt="深色木門" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">深色木紋</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="450">
+                    <img src="assets/demo5.jpg" alt="白色門" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">現代白色門</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="500">
+                    <img src="assets/demo6.jpg" alt="室內白門" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">白色系門</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="550">
+                    <img src="assets/demo10.jpg" alt="黑門" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">消光黑門</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                                <!-- 頁尾 -->
-                                <footer id="contact">
-                                    <div class="container">
-                                        <div class="footer-content">
-                                            <div class="footer-logo">BECK E7</div>
-                                            <p class="footer-text">立即聯繫我們，為您的居家安全進行免費線上評估！</p>
-                                            <a href="https://line.me/ti/p/@YOUR_LINE_ID" target="_blank"
-                                                class="line-cta-btn">
-                                                <i class="fab fa-line"></i> 加 LINE 預約評估
-                                            </a>
-                                            <div class="footer-links">
-                                                <a href="#features">產品功能</a>
-                                                <a href="#safety">安全保證</a>
-                                                <a href="#specs">規格參數</a>
-                                                <a href="#gallery">安裝案例</a>
-                                            </div>
-                                            <p class="copyright">Copyright © 2025 BECK. All Rights Reserved.</p>
-                                        </div>
-                                    </div>
-                                </footer>
+    <!-- 頁尾 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">BECK E7</div>
+                <p class="footer-text">立即聯繫我們，為您的居家安全進行免費線上評估！</p>
+                <a href="https://line.me/ti/p/@YOUR_LINE_ID" target="_blank" class="line-cta-btn">
+                    <i class="fab fa-line"></i> 加 LINE 預約評估
+                </a>
+                <div class="footer-links">
+                    <a href="#features">產品功能</a>
+                    <a href="#safety">安全保證</a>
+                    <a href="#specs">規格參數</a>
+                    <a href="#gallery">安裝案例</a>
+                </div>
+                <p class="copyright">Copyright © 2025 BECK. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-                                <!-- 返回頂部按鈕 -->
-                                <button class="back-to-top" id="backToTop" aria-label="返回頂部">
-                                    <i class="fas fa-arrow-up"></i>
-                                </button>
+    <!-- 返回頂部按鈕 -->
+    <button class="back-to-top" id="backToTop" aria-label="返回頂部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-                                <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

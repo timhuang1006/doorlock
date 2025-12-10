@@ -279,28 +279,45 @@ function init3DProduct() {
     });
 }
 
-// ----- 解鎖按鈕演示 -----
+// ----- APP模擬器互動 -----
 function initUnlockDemo() {
-    const unlockBtn = document.getElementById('unlockBtn');
-    const unlockStatus = document.getElementById('unlockStatus');
-
-    if (!unlockBtn || !unlockStatus) return;
-
-    unlockBtn.addEventListener('click', () => {
-        unlockBtn.classList.add('success');
-
-        const icon = unlockBtn.querySelector('i');
-        icon.classList.remove('fa-lock');
-        icon.classList.add('fa-unlock');
-
-        unlockStatus.innerHTML = '<span style="color:#06c755"><i class="fas fa-check-circle"></i> 解鎖成功，門已開啟</span>';
-
-        setTimeout(() => {
-            unlockBtn.classList.remove('success');
-            icon.classList.remove('fa-unlock');
-            icon.classList.add('fa-lock');
-            unlockStatus.textContent = '訪客請求進入...';
-        }, 3000);
+    const btnUnlock = document.getElementById('btnUnlock');
+    const countdownNum = document.getElementById('countdownNum');
+    const stateRequest = document.getElementById('appStateRequest');
+    const stateUnlocked = document.getElementById('appStateUnlocked');
+    const unlockEffect = document.getElementById('unlockEffect');
+    
+    if (!btnUnlock) {
+        console.warn('APP demo elements not found');
+        return;
+    }
+    
+    let countdown = 60;
+    
+    // 更新倒數
+    setInterval(function() {
+        countdown--;
+        if (countdown < 0) countdown = 60;
+        if (countdownNum) countdownNum.textContent = countdown;
+    }, 1000);
+    
+    // 點擊開鎖按鈕
+    btnUnlock.addEventListener('click', function() {
+        // 顯示特效
+        if (unlockEffect) {
+            unlockEffect.classList.add('active');
+        }
+        
+        // 1.5秒後切換到解鎖狀態
+        setTimeout(function() {
+            if (unlockEffect) unlockEffect.classList.remove('active');
+            if (stateUnlocked) stateUnlocked.classList.add('active');
+        }, 1500);
+        
+        // 5秒後恢復初始狀態
+        setTimeout(function() {
+            if (stateUnlocked) stateUnlocked.classList.remove('active');
+        }, 6000);
     });
 }
 
