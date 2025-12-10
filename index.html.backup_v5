@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BECK E7 旗艦智能鎖 | 頂級安全守護</title>
+    <meta name="description" content="BECK E7 智能門鎖，結合人臉辨識、遠端開門、指紋等六大功能。頂級安全守護，奢華黑金配色。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- 滾動進度條 -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- 粒子背景 Canvas -->
+    <canvas id="particleCanvas" class="particle-canvas"></canvas>
+
+    <!-- 載入動畫 -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-logo">BECK E7</div>
+            <div class="loader-spinner"></div>
+            <div class="loader-text">載入中...</div>
+        </div>
+    </div>
+    <script>
+        // Failsafe to hide loader
+        setTimeout(function () {
+            var l = document.getElementById('pageLoader');
+            if (l) {
+                l.style.opacity = '0';
+                l.style.visibility = 'hidden';
+                l.style.display = 'none';
+            }
+        }, 2000);
+    </script>
+
+    <!-- 導覽列 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">BECK E7</div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="選單">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-right">
+                <a href="#contact" class="nav-btn">立即諮詢</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 行動版選單 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#safety" class="mobile-menu-item"><i class="fas fa-gem"></i> 頂級安全</a>
+        <a href="#features" class="mobile-menu-item"><i class="fas fa-list-alt"></i> 核心功能</a>
+
+        <a href="#app-demo" class="mobile-menu-item"><i class="fas fa-mobile-alt"></i> APP遠端</a>
+        <a href="#advanced" class="mobile-menu-item"><i class="fas fa-magic"></i> 黑科技</a>
+        <a href="#specs" class="mobile-menu-item"><i class="fas fa-clipboard-list"></i> 詳細規格</a>
+        <a href="#gallery" class="mobile-menu-item"><i class="fas fa-images"></i> 實機案例</a>
+    </div>
+
+    <!-- 快捷按鈕列（桌面版） -->
+    <div class="quick-access-bar desktop-only">
+        <a href="#safety" class="qa-btn"><i class="fas fa-gem"></i> <span>頂級安全</span></a>
+        <a href="#features" class="qa-btn"><i class="fas fa-list-alt"></i> <span>核心功能</span></a>
+
+        <a href="#app-demo" class="qa-btn"><i class="fas fa-mobile-alt"></i> <span>APP遠端</span></a>
+        <a href="#advanced" class="qa-btn"><i class="fas fa-magic"></i> <span>黑科技</span></a>
+        <a href="#specs" class="qa-btn"><i class="fas fa-clipboard-list"></i> <span>規格</span></a>
+        <a href="#gallery" class="qa-btn"><i class="fas fa-images"></i> <span>案例</span></a>
+    </div>
+
+    <!-- Hero 主視覺區 -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-layers">
+            <div class="hero-bg-layer layer-1"></div>
+            <div class="hero-bg-layer layer-2"></div>
+        </div>
+
+        <div class="hero-content-wrapper">
+            <div class="hero-title-group animate-on-scroll">
+                <h1>BECK E7 <span class="gold-glow">旗艦守護者</span></h1>
+                <p class="hero-subtitle">多種功能集一身，更懂你的智能門鎖</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="10">10</span>
+                        <span class="stat-label">種解鎖方式</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="24">24</span>
+                        <span class="stat-label">小時守護</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="99">99</span>
+                        <span class="stat-label">% 辨識率</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-product-wrapper animate-on-scroll">
+                <div class="product-3d-container" id="product3D">
+                    <img src="assets/main_lock_2.png" alt="BECK E7 產品" class="product-img-3d"
+                        onerror="this.src='https://placehold.co/800x1200/111/FFD700?text=BECK+E7';">
+                    <div class="product-glow-effect"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>往下探索</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+
+
+    <!-- 核心功能卡片區 -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">十大核心 <span class="gold-glow">解鎖方式</span></h2>
+
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll" data-delay="0">
+                    <div class="feature-icon"><i class="fas fa-face-smile"></i></div>
+                    <h3>人臉辨識</h3>
+                    <p>AI 3D 結構光，活體檢測，無感秒開</p>
+                    <div class="feature-badge">主推功能</div>
+                </div>
+
+                <div class="feature-card animate-on-scroll" data-delay="50">
+                    <div class="feature-icon"><i class="fas fa-fingerprint"></i></div>
+                    <h3>指紋辨識</h3>
+                    <p>半導體指紋模組，越用越靈敏</p>
+                    <div class="feature-badge">主推功能</div>
+                </div>
+
+                <div class="feature-card animate-on-scroll" data-delay="100">
+                    <div class="feature-icon"><i class="fas fa-hand-paper"></i></div>
+                    <h3>掌靜脈</h3>
+                    <p>非接觸式解鎖，衛生又快速</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll" data-delay="150">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>APP 遠端</h3>
+                    <p>手機隨時查看、遠端解鎖</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll" data-delay="200">
+                    <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                    <h3>密碼解鎖</h3>
+                    <p>32 位虛位密碼，防偷窺設計</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll" data-delay="250">
+                    <div class="feature-icon"><i class="fas fa-id-card"></i></div>
+                    <h3>NFC 門卡</h3>
+                    <p>加密門卡，適合長輩兒童</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll" data-delay="300">
+                    <div class="feature-icon"><i class="fas fa-mobile"></i></div>
+                    <h3>手機 NFC</h3>
+                    <p>支援手機 NFC 感應解鎖</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll" data-delay="350">
+                    <div class="feature-icon"><i class="fas fa-key"></i></div>
+                    <h3>機械鑰匙</h3>
+                    <p>C 級鎖芯備用，Type-C 緊急供電</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll" data-delay="400">
+                    <div class="feature-icon"><i class="fas fa-user-secret"></i></div>
+                    <h3>臨時密碼</h3>
+                    <p>訪客專用，可設定次數或時效</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll" data-delay="450">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>組合解鎖</h3>
+                    <p>人臉+指紋等雙重驗證，安全加倍</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心安全 -->
+    <section id="safety" class="safety-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">三大核心 <span class="gold-glow">安全保證</span></h2>
+
+            <div class="safety-grid">
+                <div class="safety-card animate-on-scroll" data-delay="0">
+                    <div class="safety-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>AI 3D 真人臉辨識</h3>
+                    <p>拒絕照片、影片、3D 模型等偽造攻擊，僅辨識立體活體。0.5秒極速感應，不懼妝容、眼鏡或帽子。</p>
+                </div>
+
+                <div class="safety-card animate-on-scroll" data-delay="150">
+                    <div class="safety-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>24H 主動雷達監控</h3>
+                    <p>業界領先毫米波雷達技術，全天候監測門外動態。當偵測到陌生人逗留徘徊，立即主動錄影並發送警報。</p>
+                </div>
+
+                <div class="safety-card animate-on-scroll" data-delay="300">
+                    <div class="safety-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>C 級鎖芯 + 防小黑盒</h3>
+                    <p>採用最高等級 C 級真插芯，搭配雙晶片電子鎖體，有效抵擋強電磁干擾（特斯拉線圈），守護物理與電子安全。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 高級黑科技 -->
+    <section id="advanced" class="advanced-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">黑科技 <span class="gold-glow">體驗升級</span></h2>
+            <p class="section-subtitle animate-on-scroll">往下滾動，感受四項頂尖科技的魅力</p>
+
+            <div class="advanced-grid">
+                <div class="advanced-card animate-on-scroll" data-delay="0">
+                    <div class="advanced-icon">
+                        <i class="fas fa-face-smile"></i>
+                    </div>
+                    <h4>無感秒開 AI 3D 人臉</h4>
+                    <p>1.3~2米身高覆蓋，抱小孩、提重物也能輕鬆刷臉進門</p>
+                </div>
+
+                <div class="advanced-card animate-on-scroll" data-delay="100">
+                    <div class="advanced-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <h4>毫米波主動防禦</h4>
+                    <p>24小時雷達監控，可疑人士門前逗留即主動語音警示</p>
+                </div>
+
+                <div class="advanced-card animate-on-scroll" data-delay="200">
+                    <div class="advanced-icon">
+                        <i class="fas fa-hand"></i>
+                    </div>
+                    <h4>新升級 掌靜脈辨識</h4>
+                    <p>非接觸式揮手解鎖，衛生又快速，不受指紋磨損影響</p>
+                </div>
+
+                <div class="advanced-card animate-on-scroll" data-delay="300">
+                    <div class="advanced-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h4>室內 4.5 吋高清大螢幕</h4>
+                    <p>超大清晰螢幕，家裡長輩無需手機也能查看門外狀況</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 詳細規格 -->
+    <section id="specs" class="specs-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">詳細規格 <span class="gold-glow">數據一覽</span></h2>
+
+            <div class="specs-grid">
+                <div class="spec-card animate-on-scroll" data-delay="0">
+                    <div class="spec-header">
+                        <i class="fas fa-microchip"></i>
+                        <h3>性能與安全</h3>
+                    </div>
+                    <div class="spec-list">
+                        <div class="spec-item">
+                            <span class="spec-label">人臉辨識技術</span>
+                            <span class="spec-value">3D 結構光</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">鎖芯等級</span>
+                            <span class="spec-value">C 級真插芯</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">主動防禦</span>
+                            <span class="spec-value">毫米波雷達</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">指紋錯誤率</span>
+                            <span class="spec-value">&lt;0.0001%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="spec-card animate-on-scroll" data-delay="150">
+                    <div class="spec-header">
+                        <i class="fas fa-battery-full"></i>
+                        <h3>電源與續航</h3>
+                    </div>
+                    <div class="spec-list">
+                        <div class="spec-item">
+                            <span class="spec-label">電池容量</span>
+                            <span class="spec-value">4200mAh</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">續航時間</span>
+                            <span class="spec-value">3-6 個月</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">緊急供電</span>
+                            <span class="spec-value">Type-C</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">低電警報</span>
+                            <span class="spec-value">&lt;15% 提醒</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="spec-card animate-on-scroll" data-delay="300">
+                    <div class="spec-header">
+                        <i class="fas fa-ruler-combined"></i>
+                        <h3>安裝與尺寸</h3>
+                    </div>
+                    <div class="spec-list">
+                        <div class="spec-item">
+                            <span class="spec-label">適用門厚</span>
+                            <span class="spec-value">40-120mm</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">材質</span>
+                            <span class="spec-value">航空鋁合金</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">工作溫度</span>
+                            <span class="spec-value">-25℃~70℃</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">防護等級</span>
+                            <span class="spec-value">IP65</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APP 演示 -->
+    <section id="app-demo" class="app-demo-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">APP <span class="gold-glow">遠端視訊對講</span></h2>
+            <p class="section-subtitle animate-on-scroll">人在外面也能隨時掌握家門狀況</p>
+
+            <div class="app-demo-wrapper animate-on-scroll">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <img src="assets/螢幕擷取畫面 2025-11-07 001342.png" alt="APP 介面" class="app-screenshot"
+                            onerror="this.src='https://placehold.co/300x600/1a1a2e/FFD700?text=APP';">
+                        <div class="app-overlay">
+                            <div class="unlock-status" id="unlockStatus">訪客請求進入...</div>
+                            <button class="unlock-btn" id="unlockBtn">
+                                <i class="fas fa-lock"></i>
+                            </button>
+                            <p class="unlock-hint">點擊解鎖</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-features">
+                    <div class="app-feature-item">
+                        <i class="fas fa-video"></i>
+                        <h4>即時視訊通話</h4>
+                        <p>高清雙向語音視訊對講</p>
+                    </div>
+                    <div class="app-feature-item">
+                        <i class="fas fa-unlock"></i>
+                        <h4>遠端一鍵開鎖</h4>
+                        <p>確認訪客後遠端解鎖</p>
+                    </div>
+                    <div class="app-feature-item">
+                        <i class="fas fa-history"></i>
+                        <h4>開門記錄查詢</h4>
+                        <p>完整記錄每次進出</p>
+                    </div>
+                    <div class="app-feature-item">
+                        <i class="fas fa-bell"></i>
+                        <h4>異常即時通知</h4>
+                        <p>門前異常立即手機推播</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== 全方位安全守護核心 ==================== -->
+    <section id="security-core" class="security-core-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">旗艦級智慧門鎖：<span class="gold-accent">全方位安全守護核心</span></h2>
+
+            <!-- 安全核心 Tabs -->
+            <div class="security-tabs animate-on-scroll">
+                <div class="security-tab" onclick="switchTab(this)">AI 3D人臉辨識</div>
+                <div class="security-tab active" onclick="switchTab(this)">紅外夜視 全天候守護</div>
+                <div class="security-tab" onclick="switchTab(this)">4吋高清大螢幕</div>
+                <div class="security-tab" onclick="switchTab(this)">24H主動監控&防偽</div>
+            </div>
+
+            <!-- 內容區塊 -->
+            <div class="security-content animate-on-scroll">
+                <!-- 左側：產品展示與對比 -->
+                <div class="security-left">
+                    <div class="security-lock-display">
+                        <img src="assets/main_lock_2.png" alt="BECK E7 紅外線掃描" class="security-lock-img">
+                        <div class="infrared-beam"></div>
+                    </div>
+
+                    <div class="security-comparison-box">
+                        <div class="comparison-item success">
+                            <div class="comp-img-wrapper">
+                                <img src="assets/screenshot_2025-11-07_001416.png" alt="紅外線補光">
+                                <div class="comp-status"><i class="fas fa-check-circle"></i> 解鎖成功</div>
+                            </div>
+                            <p>紅外線鏡頭補光</p>
+                        </div>
+                        <div class="comparison-item fail">
+                            <div class="comp-img-wrapper">
+                                <img src="assets/screenshot_2025-11-07_001512.png" alt="無紅外線">
+                                <div class="comp-status"><i class="fas fa-times-circle"></i> 解鎖失敗</div>
+                            </div>
+                            <p>無紅外線失敗</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右側：功能說明 -->
+                <div class="security-right">
+                    <h3 class="security-feature-title">紅外夜視補光 識別不減速</h3>
+                    <p class="security-feature-subtitle">24小時不間斷，黑夜也清晰</p>
+
+                    <div class="security-feature-list">
+                        <div class="sec-feature-item">
+                            <div class="sec-feature-icon"><i class="fas fa-moon"></i></div>
+                            <div class="sec-feature-text">
+                                <h4>微光全彩</h4>
+                                <p>即使在微弱光線下，也能呈現彩色畫面</p>
+                            </div>
+                        </div>
+                        <div class="sec-feature-item">
+                            <div class="sec-feature-icon"><i class="fas fa-eye"></i></div>
+                            <div class="sec-feature-text">
+                                <h4>紅外線補光</h4>
+                                <p>無光環境自動切換紅外線模式，清晰可見</p>
+                            </div>
+                        </div>
+                        <div class="sec-feature-item">
+                            <div class="sec-feature-icon"><i class="fas fa-video"></i></div>
+                            <div class="sec-feature-text">
+                                <h4>1080P高清畫質</h4>
+                                <p>隨時隨地查看門外狀況，細節不遺漏</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 安靜可靠機械鎖體 -->
+    <section id="mechanical-lock" class="mechanical-lock-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">安靜可靠 <span class="gold-glow">機械鎖體</span></h2>
+            <p class="section-subtitle animate-on-scroll">德國工藝傳承，每一次開鎖都是享受</p>
+
+            <div class="mechanical-showcase animate-on-scroll">
+                <div class="mech-image-container">
+                    <img src="assets/screenshot_2025-11-07_001829.png" alt="機械鎖體結構">
+                </div>
+
+                <div class="mech-features">
+                    <div class="mech-feature">
+                        <div class="mech-icon"><i class="fas fa-volume-mute"></i></div>
+                        <div class="mech-text">
+                            <h4>超靜音運轉</h4>
+                            <p>開鎖聲小於 45dB，深夜回家不打擾家人</p>
+                        </div>
+                    </div>
+                    <div class="mech-feature">
+                        <div class="mech-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="mech-text">
+                            <h4>大扭力電機</h4>
+                            <p>主機外置電機，帶動天地勾，穩定可靠</p>
+                        </div>
+                    </div>
+                    <div class="mech-feature">
+                        <div class="mech-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="mech-text">
+                            <h4>0.3 秒解鎖</h4>
+                            <p>急速響應，辨識即開，絕不拖泥帶水</p>
+                        </div>
+                    </div>
+                    <div class="mech-feature">
+                        <div class="mech-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="mech-text">
+                            <h4>十萬次壽命</h4>
+                            <p>耐用設計，長久使用依然順滑如初</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 安裝實例 Gallery -->
+    <section id="gallery" class="gallery-section">
+        <div class="container-fluid">
+            <h2 class="section-title animate-on-scroll"><span class="gold-glow">實機安裝</span> 案例展示</h2>
+            <p class="section-subtitle animate-on-scroll">多種門型完美適配</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll" data-delay="0">
+                    <img src="assets/demo15.jpg" alt="安裝案例" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">輕薄機身搭配</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="50">
+                    <img src="assets/demo16.jpg" alt="安裝案例" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">室內機身</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="100">
+                    <img src="assets/demo17.jpg" alt="安裝案例" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">深色門搭配</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="150">
+                    <img src="assets/demo18.jpg" alt="安裝案例" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">室內機特寫</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="250">
+                    <img src="assets/DEMO1.jpg" alt="室內螢幕" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">4.5吋螢幕</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="300">
+                    <img src="assets/demo3.jpg" alt="傳統門" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">紅木紋門</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="350">
+                    <img src="assets/demo4.jpg" alt="鑄鋁門" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">鑄鋁門搭配</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="400">
+                    <img src="assets/demo2.jpg" alt="深色木門" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">深色木紋</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="450">
+                    <img src="assets/demo5.jpg" alt="白色門" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">現代白色門</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="500">
+                    <img src="assets/demo6.jpg" alt="室內白門" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">白色系門</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-delay="550">
+                    <img src="assets/demo10.jpg" alt="黑門" loading="lazy"
+                        onerror="this.src='https://placehold.co/400x500/1a1a2e/FFD700?text=案例';">
+                    <div class="gallery-overlay">
+                        <span class="gallery-label">消光黑門</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">BECK E7</div>
+                <p class="footer-text">立即聯繫我們，為您的居家安全進行免費線上評估！</p>
+                <a href="https://line.me/ti/p/@YOUR_LINE_ID" target="_blank" class="line-cta-btn">
+                    <i class="fab fa-line"></i> 加 LINE 預約評估
+                </a>
+                <div class="footer-links">
+                    <a href="#features">產品功能</a>
+                    <a href="#safety">安全保證</a>
+                    <a href="#specs">規格參數</a>
+                    <a href="#gallery">安裝案例</a>
+                </div>
+                <p class="copyright">Copyright © 2025 BECK. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回頂部按鈕 -->
+    <button class="back-to-top" id="backToTop" aria-label="返回頂部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
