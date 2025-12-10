@@ -49,7 +49,7 @@
                 <span></span>
             </button>
             <div class="nav-right">
-                <a href="#contact" class="nav-btn">立即諮詢</a>
+                <a href="https://line.me/ti/p/@468llrus" target="_blank" class="nav-btn">立即諮詢</a>
             </div>
         </div>
     </nav>
@@ -239,9 +239,14 @@
 
                 <!-- 右上：頂級光學鏡頭 -->
                 <div class="tech-card lens-card animate-on-scroll" data-delay="100">
-                    <div class="tech-icon"><i class="fas fa-camera-retro"></i></div>
-                    <h3>頂級光學鏡頭</h3>
-                    <p>F1.8 大光圈，超廣角視野，還原真實色彩，夜間拍攝更清晰</p>
+                    <div class="lens-image-container">
+                        <img src="assets/lens_exploded.png" alt="頂級光學鏡頭分解圖" class="lens-exploded-img">
+                    </div>
+                    <div class="lens-text-overlay">
+                        <div class="tech-icon"><i class="fas fa-camera-retro"></i></div>
+                        <h3>頂級光學鏡頭</h3>
+                        <p>F1.8 大光圈，超廣角視野，還原真實色彩，夜間拍攝更清晰</p>
+                    </div>
                 </div>
 
                 <!-- 左下：急速機械鎖體 (滿版圖 + 疊加文字) -->
@@ -346,7 +351,7 @@
         </div>
     </section>
 
-                    <!-- APP 演示 -->
+    <!-- APP 演示 -->
     <section id="app-demo" class="app-demo-section">
         <div class="container">
             <h2 class="section-title animate-on-scroll">APP <span class="gold-glow">遠端視訊對講</span></h2>
@@ -359,7 +364,7 @@
                     <div class="phone-frame">
                         <!-- APP畫面內容 -->
                         <div class="app-screen" id="appScreen">
-                            
+
                             <!-- 初始狀態：遠程開鎖請求 -->
                             <div class="app-state app-state-request" id="appStateRequest">
                                 <!-- 頂部導航 -->
@@ -368,7 +373,7 @@
                                     <span class="header-title">展示架2</span>
                                     <span></span>
                                 </div>
-                                
+
                                 <!-- 遠程開鎖請求卡片 -->
                                 <div class="unlock-request-card">
                                     <div class="request-icon">
@@ -376,7 +381,7 @@
                                     </div>
                                     <span class="request-text">遠程開鎖請求</span>
                                 </div>
-                                
+
                                 <!-- 功能圖標列 -->
                                 <div class="app-icons-row">
                                     <div class="app-icon-item">
@@ -396,7 +401,7 @@
                                         <span>更多</span>
                                     </div>
                                 </div>
-                                
+
                                 <!-- 開鎖對話框 -->
                                 <div class="unlock-dialog">
                                     <div class="dialog-title">遠程開鎖請求</div>
@@ -409,7 +414,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- 解鎖成功狀態 -->
                             <div class="app-state app-state-unlocked" id="appStateUnlocked">
                                 <!-- 頂部通知 -->
@@ -424,10 +429,10 @@
                                         <div class="notif-user">手機用戶:</div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- 藍色區塊 -->
                                 <div class="unlock-blue-bar"></div>
-                                
+
                                 <!-- 功能圖標列 -->
                                 <div class="app-icons-row">
                                     <div class="app-icon-item">
@@ -447,7 +452,7 @@
                                         <span>更多</span>
                                     </div>
                                 </div>
-                                
+
                                 <!-- 記錄列表 -->
                                 <div class="unlock-records">
                                     <div class="records-date">今天</div>
@@ -468,14 +473,14 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- 開鎖成功特效 -->
                             <div class="unlock-effect" id="unlockEffect">
                                 <div class="effect-ring"></div>
                                 <div class="effect-icon"><i class="fas fa-unlock-alt"></i></div>
                                 <div class="effect-text">門鎖已打開</div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
