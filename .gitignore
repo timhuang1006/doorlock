@@ -1,0 +1,14 @@
+# 忽略備份資料夾
+backup_*/
+*.backup
+*.log
+
+# 忽略 Firebase 暫存檔 (這也很大)
+.firebase/
+
+# 忽略 Python 暫存檔
+__pycache__/
+*.pyc
+
+# 忽略依賴套件 (如果有)
+node_modules/
